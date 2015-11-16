@@ -1,9 +1,32 @@
-#########
-# Items #
-#########
+# Items
+item.manncraft.strangifier.name=Strangifier:
+item.manncraft.killstreak_kit.name=Killstreak Kit: 
+item.manncraft.specialised_killstreak_kit.name=Specialized Killstreak Kit:
+item.manncraft.professional_killstreak_kit.name=Professional Killstreak Kit: 
 
+# Blocks
 
-##########
-# Blocks #
-##########
+# Creative Tabs
+itemGroup.manncraft=Manncraft
 
+# Strange Ranks
+manncraft.strange.rank.strange=Strange
+manncraft.strange.rank.unremarkable=Unremarkable
+manncraft.strange.rank.scarcely_lethal=Scarcely Lethal
+manncraft.strange.rank.mildly_menacing=Mildly Menacing
+manncraft.strange.rank.somewhat_threatening=Somewhat Threatening
+manncraft.strange.rank.uncharitable=Uncharitable
+manncraft.strange.rank.notably_dangerous=Notably Dangerous
+manncraft.strange.rank.sufficiently_lethal=Sufficiently Lethal
+manncraft.strange.rank.truly_feared=Truly Feared
+manncraft.strange.rank.spectacularly_lethal=Spectacularly Lethal
+manncraft.strange.rank.gore_spattered=Gore-Spattered
+manncraft.strange.rank.wicked_nasty=Wicked Nasty
+manncraft.strange.rank.positively_inhumane=Positively Inhumane
+manncraft.strange.rank.totally_ordinary=Totally Ordinary
+manncraft.strange.rank.face_melting=Face-Melting
+manncraft.strange.rank.rage_inducing=Rage-Inducing
+manncraft.strange.rank.epic=Epic
+manncraft.strange.rank.legendary=Legendary
+manncraft.strange.rank.swedish=Swedish
+manncraft.strange.rank.notchs_own=Notch's Own

@@ -1,15 +1,20 @@
 package ganymedes01.manncraft.proxy;
 
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import ganymedes01.manncraft.eventHandlers.MiscEventHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
+import ganymedes01.manncraft.ModItems;
+import ganymedes01.manncraft.eventHandlers.CommonEventHandler;
+import ganymedes01.manncraft.recipes.AddQualityRecipe;
+import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(MiscEventHandler.INSTANCE);
+		ModItems.registerItems();
+		GameRegistry.addRecipe(new AddQualityRecipe());
+		MinecraftForge.EVENT_BUS.register(CommonEventHandler.INSTANCE);
 	}
 
 	public void init(FMLInitializationEvent event) {
