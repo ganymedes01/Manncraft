@@ -1,13 +1,19 @@
 # Items
-item.manncraft.strangifier.name=Strangifier:
-item.manncraft.killstreak_kit.name=Killstreak Kit: 
-item.manncraft.specialised_killstreak_kit.name=Specialized Killstreak Kit:
-item.manncraft.professional_killstreak_kit.name=Professional Killstreak Kit: 
+item.manncraft.strangifier.name=Strangifier
+item.manncraft.killstreak_kit.name=Killstreak Kit 
+item.manncraft.specialised_killstreak_kit.name=Specialized Killstreak Kit
+item.manncraft.professional_killstreak_kit.name=Professional Killstreak Kit 
 
 # Blocks
 
 # Creative Tabs
 itemGroup.manncraft=Manncraft
+
+# Strings
+manncraft.string.kills=Kills
+manncraft.string.killstreak=Killstreak
+manncraft.string.sheen=Sheen
+manncraft.string.killstreaker=Killstreaker
 
 # Strange Ranks
 manncraft.strange.rank.strange=Strange

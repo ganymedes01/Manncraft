@@ -85,6 +85,6 @@ public class ItemStrangifier extends ItemManncraft {
 		int kills = nbt.getInteger(STRANGE_KEY);
 		Rank rank = Rank.getRank(kills);
 		tooltip.add(EnumChatFormatting.GOLD + rank.getLocalisedName());
-		tooltip.add(EnumChatFormatting.GOLD + "Kills: " + kills);
+		tooltip.add(EnumChatFormatting.GOLD + StatCollector.translateToLocal(Reference.MOD_ID + ".string.kills") + ": " + kills);
 	}
 }

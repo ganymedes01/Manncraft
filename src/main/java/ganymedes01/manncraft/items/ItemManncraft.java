@@ -31,7 +31,7 @@ public abstract class ItemManncraft extends Item {
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey(TARGET_WEAPON_KEY, Constants.NBT.TAG_COMPOUND))
 			weapon = ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag(TARGET_WEAPON_KEY));
 
-		return weapon == null ? name : name + " " + weapon.getDisplayName();
+		return weapon == null ? name : name + ": " + weapon.getDisplayName();
 	}
 
 	@Override

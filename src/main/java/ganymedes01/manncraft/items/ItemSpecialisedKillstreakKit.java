@@ -3,7 +3,10 @@ package ganymedes01.manncraft.items;
 import java.util.List;
 import java.util.Locale;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.manncraft.lib.Reference;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
@@ -46,6 +49,19 @@ public class ItemSpecialisedKillstreakKit extends ItemKillstreakKit {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean isComplex) {
+		Sheen sheen = Sheen.values()[0];
+		if (stack.hasTagCompound()) {
+			NBTTagCompound nbt = stack.getTagCompound();
+			if (nbt.hasKey(KILLSTREAK_SHEEN_KEY, Constants.NBT.TAG_INT))
+				sheen = Sheen.values()[nbt.getInteger(KILLSTREAK_SHEEN_KEY)];
+		}
+		tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(Reference.MOD_ID + ".string.sheen") + ": " + sheen.getLocalisedName());
+	}
+
+	@Override
 	protected void addKillstreakData(ItemStack stack, NBTTagCompound nbt) {
 		int sheen = getProperty(stack, KILLSTREAK_SHEEN_KEY);
 		nbt.setInteger(KILLSTREAK_SHEEN_KEY, sheen);
@@ -55,7 +71,7 @@ public class ItemSpecialisedKillstreakKit extends ItemKillstreakKit {
 	public void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip) {
 		if (nbt.hasKey(KILLSTREAK_SHEEN_KEY, Constants.NBT.TAG_INT)) {
 			Sheen sheen = Sheen.values()[nbt.getInteger(KILLSTREAK_SHEEN_KEY)];
-			tooltip.add(EnumChatFormatting.AQUA + "Sheen: " + sheen.getLocalisedName());
+			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(Reference.MOD_ID + ".string.sheen") + ": " + sheen.getLocalisedName());
 		}
 	}
 
