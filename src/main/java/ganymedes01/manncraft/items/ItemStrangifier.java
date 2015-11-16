@@ -3,7 +3,10 @@ package ganymedes01.manncraft.items;
 import java.util.List;
 import java.util.Locale;
 
+import ganymedes01.manncraft.handler.AnnouncementsHandler;
 import ganymedes01.manncraft.lib.Reference;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
@@ -76,8 +79,14 @@ public class ItemStrangifier extends ItemManncraft {
 	}
 
 	@Override
-	public void onDeathEvent(NBTTagCompound nbt) {
-		nbt.setInteger(STRANGE_KEY, nbt.getInteger(STRANGE_KEY) + 1);
+	public void onKill(EntityPlayer killer, EntityLivingBase victim, NBTTagCompound nbt) {
+		int current = nbt.getInteger(STRANGE_KEY);
+		nbt.setInteger(STRANGE_KEY, current + 1);
+
+		Rank newRank = Rank.getRank(current + 1);
+		if (Rank.getRank(current) != Rank.getRank(current + 1))
+			// TODO
+			AnnouncementsHandler.INSTANCE.sendMessageToAll("Weapon leveled up: " + newRank.getLocalisedName());
 	}
 
 	@Override

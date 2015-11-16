@@ -1,4 +1,4 @@
-package ganymedes01.manncraft.eventHandlers;
+package ganymedes01.manncraft.handler.events;
 
 import java.util.List;
 

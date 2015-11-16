@@ -5,7 +5,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.manncraft.ModItems;
-import ganymedes01.manncraft.eventHandlers.CommonEventHandler;
+import ganymedes01.manncraft.handler.events.CommonEventHandler;
 import ganymedes01.manncraft.recipes.AddQualityRecipe;
 import net.minecraftforge.common.MinecraftForge;
 

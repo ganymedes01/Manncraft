@@ -1,4 +1,4 @@
-package ganymedes01.manncraft.eventHandlers;
+package ganymedes01.manncraft.handler.events;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ganymedes01.manncraft.ModItems;
@@ -23,32 +23,29 @@ public class CommonEventHandler {
 
 	@SubscribeEvent
 	public void onDeathEvent(LivingDeathEvent event) {
-		ItemStack weapon = getWeapon(event.source);
-		if (weapon == null)
-			return;
-
-		if (!weapon.hasTagCompound())
-			return;
-
-		NBTTagCompound nbt = weapon.getTagCompound();
-		if (nbt.hasKey(Reference.MOD_NAME, Constants.NBT.TAG_COMPOUND))
-			nbt = nbt.getCompoundTag(Reference.MOD_NAME);
-		else
-			return;
-
-		for (Item item : ModItems.ITEMS)
-			if (item instanceof ItemManncraft) {
-				ItemManncraft mannItem = (ItemManncraft) item;
-				if (mannItem.isQualityPresent(nbt))
-					mannItem.onDeathEvent(nbt);
+		EntityPlayer killer = getKiller(event.source);
+		if (killer != null) {
+			ItemStack weapon = killer.getCurrentEquippedItem();
+			if (weapon != null && weapon.hasTagCompound()) {
+				NBTTagCompound nbt = weapon.getTagCompound();
+				if (nbt.hasKey(Reference.MOD_NAME, Constants.NBT.TAG_COMPOUND)) {
+					nbt = nbt.getCompoundTag(Reference.MOD_NAME);
+					for (Item item : ModItems.ITEMS)
+						if (item instanceof ItemManncraft) {
+							ItemManncraft mannItem = (ItemManncraft) item;
+							if (mannItem.isQualityPresent(nbt))
+								mannItem.onKill(killer, event.entityLiving, nbt);
+						}
+				}
 			}
+		}
 	}
 
-	private ItemStack getWeapon(DamageSource source) {
+	private EntityPlayer getKiller(DamageSource source) {
 		if (source instanceof EntityDamageSource) {
 			Entity entity = ((EntityDamageSource) source).getEntity();
 			if (entity instanceof EntityPlayer)
-				return ((EntityPlayer) entity).getCurrentEquippedItem();
+				return (EntityPlayer) entity;
 		}
 		return null;
 	}

@@ -7,6 +7,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.manncraft.Manncraft;
 import ganymedes01.manncraft.lib.Reference;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -70,7 +72,10 @@ public abstract class ItemManncraft extends Item {
 
 	public abstract boolean isQualityPresent(NBTTagCompound nbt);
 
-	public abstract void onDeathEvent(NBTTagCompound nbt);
+	/**
+	 * Called when an entity is killed with a weapon
+	 */
+	public abstract void onKill(EntityPlayer killer, EntityLivingBase victim, NBTTagCompound nbt);
 
 	public abstract void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip);
 }

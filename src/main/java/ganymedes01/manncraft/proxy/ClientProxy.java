@@ -5,7 +5,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import ganymedes01.manncraft.ModItems;
 import ganymedes01.manncraft.client.renderer.items.KillstreakKitRenderer;
-import ganymedes01.manncraft.eventHandlers.ClientEventHandler;
+import ganymedes01.manncraft.handler.events.ClientEventHandler;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 
