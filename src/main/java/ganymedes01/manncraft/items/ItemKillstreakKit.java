@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.util.Constants;
 
 public class ItemKillstreakKit extends ItemManncraft {
@@ -29,7 +30,7 @@ public class ItemKillstreakKit extends ItemManncraft {
 
 	@Override
 	public boolean isQualityPresent(NBTTagCompound nbt) {
-		return nbt.hasKey(KILLSTREAK_KEY, Constants.NBT.TAG_INT);
+		return nbt.hasKey(KILLSTREAK_KEY, Constants.NBT.TAG_BYTE);
 	}
 
 	@Override
@@ -39,14 +40,7 @@ public class ItemKillstreakKit extends ItemManncraft {
 
 	@Override
 	public void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip) {
-		// TODO
-		if (nbt.hasKey(ItemKillstreakKit.KILLSTREAK_KEY, Constants.NBT.TAG_INT)) {
-			if (nbt.hasKey(ItemSpecialisedKillstreakKit.KILLSTREAK_SHEEN_KEY, Constants.NBT.TAG_INT)) {
-
-			}
-			if (nbt.hasKey(ItemProfessionalKillstreakKit.KILLSTREAK_EYES_KEY, Constants.NBT.TAG_INT)) {
-
-			}
-		}
+		if (nbt.hasKey(KILLSTREAK_KEY, Constants.NBT.TAG_BYTE) && nbt.getBoolean(KILLSTREAK_KEY))
+			tooltip.add(EnumChatFormatting.AQUA + "Killstreak");
 	}
 }

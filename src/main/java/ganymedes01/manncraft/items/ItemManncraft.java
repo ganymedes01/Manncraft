@@ -2,8 +2,11 @@ package ganymedes01.manncraft.items;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.manncraft.Manncraft;
 import ganymedes01.manncraft.lib.Reference;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,7 +34,12 @@ public abstract class ItemManncraft extends Item {
 		return weapon == null ? name : name + " " + weapon.getDisplayName();
 	}
 
-	public ItemStack addQuality(ItemStack stack, ItemStack weapon) {
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister reg) {
+	}
+
+	public ItemStack addQualityToWeapon(ItemStack stack, ItemStack weapon) {
 		if (!weapon.hasTagCompound())
 			weapon.setTagCompound(new NBTTagCompound());
 		NBTTagCompound weaponNBT = weapon.getTagCompound();

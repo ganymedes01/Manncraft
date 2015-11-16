@@ -17,7 +17,7 @@ public class AddQualityRecipe implements IRecipe {
 		if (mannItem != null && weapon != null) {
 			ItemManncraft item = (ItemManncraft) mannItem.getItem();
 			if (!item.isQualityApplied(mannItem, weapon) && item.isCompatibleWeapon(mannItem, weapon))
-				return item.addQuality(mannItem, weapon);
+				return item.addQualityToWeapon(mannItem, weapon);
 		}
 
 		return null;
