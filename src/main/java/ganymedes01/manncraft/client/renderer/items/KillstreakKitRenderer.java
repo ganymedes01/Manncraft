@@ -36,31 +36,28 @@ public class KillstreakKitRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch (type) {
 			case ENTITY:
-				GL11.glScalef(1.5F, 1.5F, 1.5F);
-				renderModel(stack, 0.0F, 1.35F, 0.F, type);
+				renderModel(stack, 0.0F, 2.0F, 0.F, 1.5F);
 				break;
 			case EQUIPPED:
-				GL11.glScalef(2F, 2F, 2F);
-				renderModel(stack, 0.25F, 1.65F, 0.25F, type);
+				renderModel(stack, 0.25F, 3.5F, 0.25F, 2.0F);
 				break;
 			case EQUIPPED_FIRST_PERSON:
-				GL11.glScalef(2F, 2F, 2F);
-				renderModel(stack, 0.25F, 1.65F, 0.25F, type);
+				renderModel(stack, 0.5F, 3.25F, 0.5F, 2.0F);
 				break;
 			case INVENTORY:
-				GL11.glScalef(2F, 2F, 2F);
-				renderModel(stack, 0.45F, 1.75F, 0.5F, type);
+				renderModel(stack, 0.35F, 3.0F, 0.5F, 2.0F);
 				break;
 			default:
 				break;
 		}
 	}
 
-	private void renderModel(ItemStack stack, float x, float y, float z, ItemRenderType type) {
+	private void renderModel(ItemStack stack, float x, float y, float z, float scale) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);
 		GL11.glScalef(1, -1, -1);
 		GL11.glRotated(270, 0, 1, 0);
+		GL11.glScalef(scale, scale, scale);
 
 		Item item = stack.getItem();
 		ResourceLocation texture = KILLSTREAK;
