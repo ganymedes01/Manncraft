@@ -2,11 +2,10 @@ package ganymedes01.manncraft.client.models;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
 @SideOnly(Side.CLIENT)
-public class ModelKillstreakKit extends ModelBase {
+public class ModelKillstreakKit extends ModelBaseManncraft {
 
 	private final ModelRenderer shape1;
 	private final ModelRenderer shape2;
@@ -29,8 +28,7 @@ public class ModelKillstreakKit extends ModelBase {
 	private final ModelRenderer shape19;
 
 	public ModelKillstreakKit() {
-		textureWidth = 64;
-		textureHeight = 32;
+		super(64, 32);
 
 		shape1 = new ModelRenderer(this, 0, 0);
 		shape1.addBox(0F, 0F, 0F, 4, 3, 4);
@@ -148,6 +146,7 @@ public class ModelKillstreakKit extends ModelBase {
 		setRotation(shape19, 0F, 0.7853982F, 0F);
 	}
 
+	@Override
 	public void renderAll(float scale) {
 		shape1.render(scale);
 		shape2.render(scale);
@@ -168,11 +167,5 @@ public class ModelKillstreakKit extends ModelBase {
 		shape17.render(scale);
 		shape18.render(scale);
 		shape19.render(scale);
-	}
-
-	private void setRotation(ModelRenderer model, float x, float y, float z) {
-		model.rotateAngleX = x;
-		model.rotateAngleY = y;
-		model.rotateAngleZ = z;
 	}
 }
