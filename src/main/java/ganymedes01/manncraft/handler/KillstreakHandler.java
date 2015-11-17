@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import ganymedes01.manncraft.items.ItemKillstreakKit;
+import ganymedes01.manncraft.network.KillstreakEndedMessagePacket;
+import ganymedes01.manncraft.network.KillstreakStartedMessagePacket;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class KillstreakHandler {
@@ -18,22 +20,20 @@ public class KillstreakHandler {
 	public void onPlayerDeath(EntityPlayer player) {
 		if (map.containsKey(player)) {
 			Integer killstreak = map.remove(player);
-			// TODO
-			ItemKillstreakKit.Killstreak ks = ItemKillstreakKit.Killstreak.getKillstreak(killstreak);
-			if (ks != null)
-				AnnouncementsHandler.INSTANCE.sendMessageToAll(player.getCommandSenderName() + "'s killstreak ended");
+			if (killstreak != null && killstreak >= ItemKillstreakKit.KILLSTREAK_STEP)
+				AnnouncementsHandler.INSTANCE.sendMessageToAll(new KillstreakEndedMessagePacket(player.getCommandSenderName(), killstreak));
 		}
 	}
 
 	public void onPlayerKill(EntityPlayer player) {
 		Integer killstreak = map.get(player);
 		if (killstreak != null) {
-			map.put(player, killstreak + 1);
+			killstreak++;
+			map.put(player, killstreak);
 
-			ItemKillstreakKit.Killstreak currentKS = ItemKillstreakKit.Killstreak.getKillstreak(killstreak);
-			ItemKillstreakKit.Killstreak newKS = ItemKillstreakKit.Killstreak.getKillstreak(killstreak + 1);
-			if (currentKS == null && newKS != null || currentKS != null && newKS != null && currentKS != newKS)
-				AnnouncementsHandler.INSTANCE.sendMessageToAll(newKS.getAnnouncement(player.getCommandSenderName(), killstreak + 1));
+			ItemKillstreakKit.Killstreak newKS = ItemKillstreakKit.Killstreak.getKillstreak(killstreak);
+			if (killstreak > 0 && killstreak % ItemKillstreakKit.KILLSTREAK_STEP == 0)
+				AnnouncementsHandler.INSTANCE.sendMessageToAll(new KillstreakStartedMessagePacket(player.getCommandSenderName(), newKS, killstreak));
 		} else
 			map.put(player, 1);
 	}

@@ -30,11 +30,11 @@ public class CommonEventHandler {
 				NBTTagCompound nbt = weapon.getTagCompound();
 				if (nbt.hasKey(Reference.MOD_NAME, Constants.NBT.TAG_COMPOUND)) {
 					nbt = nbt.getCompoundTag(Reference.MOD_NAME);
-					for (Item item : ModItems.ITEMS)
+					for (Item item : new Item[] { ModItems.strangifier, ModItems.killstreak_kit }) // FIXME workaround for now
 						if (item instanceof ItemManncraft) {
 							ItemManncraft mannItem = (ItemManncraft) item;
 							if (mannItem.isQualityPresent(nbt))
-								mannItem.onKill(killer, event.entityLiving, nbt);
+								mannItem.onKill(killer, event.entityLiving, nbt, weapon.copy());
 						}
 				}
 			}

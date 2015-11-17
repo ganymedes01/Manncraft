@@ -75,7 +75,7 @@ public abstract class ItemManncraft extends Item {
 	/**
 	 * Called when an entity is killed with a weapon
 	 */
-	public abstract void onKill(EntityPlayer killer, EntityLivingBase victim, NBTTagCompound nbt);
+	public abstract void onKill(EntityPlayer killer, EntityLivingBase victim, NBTTagCompound nbt, ItemStack weapon);
 
 	public abstract void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip);
 }

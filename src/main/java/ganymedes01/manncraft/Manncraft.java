@@ -7,7 +7,16 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
 import ganymedes01.manncraft.lib.Reference;
+import ganymedes01.manncraft.network.ChatMessagePacketHandler.KillstreakEndHandler;
+import ganymedes01.manncraft.network.ChatMessagePacketHandler.KillstreakStartHandler;
+import ganymedes01.manncraft.network.ChatMessagePacketHandler.StrangifierLevelUpHandler;
+import ganymedes01.manncraft.network.KillstreakEndedMessagePacket;
+import ganymedes01.manncraft.network.KillstreakStartedMessagePacket;
+import ganymedes01.manncraft.network.StrangifierLevelUpMessagePacket;
 import ganymedes01.manncraft.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -29,8 +38,15 @@ public class Manncraft {
 		}
 	};
 
+	public static SimpleNetworkWrapper networkWrapper;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		networkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+		networkWrapper.registerMessage(StrangifierLevelUpHandler.class, StrangifierLevelUpMessagePacket.class, 0, Side.CLIENT);
+		networkWrapper.registerMessage(KillstreakEndHandler.class, KillstreakEndedMessagePacket.class, 1, Side.CLIENT);
+		networkWrapper.registerMessage(KillstreakStartHandler.class, KillstreakStartedMessagePacket.class, 2, Side.CLIENT);
+
 		proxy.preInit(event);
 	}
 

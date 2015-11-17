@@ -15,6 +15,16 @@ manncraft.string.killstreak=Killstreak
 manncraft.string.sheen=Sheen
 manncraft.string.killstreaker=Killstreaker
 
+# Messages
+manncraft.message.strange_level_up=%s's %s has reached a new rank: %s
+manncraft.message.killstreak_ended=%s's killstreak ended %d
+manncraft.message.killstreak_started.killing_spree=%s is on a %s %d
+manncraft.message.killstreak_started.unstoppable=%s is %s %d
+manncraft.message.killstreak_started.rampage=%s is on a %s %d
+manncraft.message.killstreak_started.god_like=%s is %s %d
+manncraft.message.killstreak_started.still_god_like=%s is %s %d
+
+
 # Strange Ranks
 manncraft.strange.rank.strange=Strange
 manncraft.strange.rank.unremarkable=Unremarkable
@@ -44,3 +54,10 @@ manncraft.killstreak.sheen.deadly_daffodil=Deadly Daffodil
 manncraft.killstreak.sheen.mean_green=Mean Green
 manncraft.killstreak.sheen.agonizing_emerald=Agonizing Emerald
 manncraft.killstreak.sheen.villainous_violet=Villainous Violet
+
+# Killstreaks
+manncraft.killstreak.name.killing_spree=Killing Spree
+manncraft.killstreak.name.unstoppable=Unstoppable
+manncraft.killstreak.name.rampage=Rampage
+manncraft.killstreak.name.god_like=God-Like
+manncraft.killstreak.name.still_god_like=still God-Like
