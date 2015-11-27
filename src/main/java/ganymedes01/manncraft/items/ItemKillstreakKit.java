@@ -55,7 +55,7 @@ public class ItemKillstreakKit extends ItemManncraft {
 	}
 
 	@Override
-	protected final void addDataToWeaponNBT(ItemStack stack, NBTTagCompound nbt) {
+	public final void addDataToWeaponNBT(ItemStack stack, NBTTagCompound nbt) {
 		nbt.setBoolean(KILLSTREAK_KEY, true);
 		addKillstreakData(stack, nbt);
 	}

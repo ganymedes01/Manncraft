@@ -4,9 +4,11 @@ import java.util.List;
 
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import ganymedes01.manncraft.ModBlocks;
 import ganymedes01.manncraft.ModItems;
-import ganymedes01.manncraft.items.ItemManncraft;
+import ganymedes01.manncraft.api.IWeaponQuality;
 import ganymedes01.manncraft.lib.Reference;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,11 +33,20 @@ public class ClientEventHandler {
 				nbt = nbt.getCompoundTag(Reference.MOD_NAME);
 
 				for (Item item : ModItems.ITEMS)
-					if (item instanceof ItemManncraft) {
-						ItemManncraft mannItem = (ItemManncraft) item;
+					if (item instanceof IWeaponQuality) {
+						IWeaponQuality mannItem = (IWeaponQuality) item;
 						if (mannItem.isQualityPresent(nbt))
 							mannItem.onTooltipEvent(nbt, tooltip);
 					}
+
+				for (Block block : ModBlocks.BLOCKS) {
+					Item item = Item.getItemFromBlock(block);
+					if (item instanceof IWeaponQuality) {
+						IWeaponQuality mannItem = (IWeaponQuality) item;
+						if (mannItem.isQualityPresent(nbt))
+							mannItem.onTooltipEvent(nbt, tooltip);
+					}
+				}
 			}
 		}
 	}

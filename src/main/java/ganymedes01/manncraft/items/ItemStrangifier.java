@@ -70,7 +70,7 @@ public class ItemStrangifier extends ItemManncraft {
 	}
 
 	@Override
-	protected void addDataToWeaponNBT(ItemStack stack, NBTTagCompound nbt) {
+	public void addDataToWeaponNBT(ItemStack stack, NBTTagCompound nbt) {
 		nbt.setInteger(STRANGE_KEY, 0);
 	}
 

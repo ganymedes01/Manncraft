@@ -5,6 +5,7 @@ item.manncraft.specialised_killstreak_kit.name=Specialized Killstreak Kit
 item.manncraft.professional_killstreak_kit.name=Professional Killstreak Kit 
 
 # Blocks
+tile.manncraft.chemistry_set.name=Chemistry Set
 
 # Creative Tabs
 itemGroup.manncraft=Manncraft
@@ -14,6 +15,7 @@ manncraft.string.kills=Kills
 manncraft.string.killstreak=Killstreak
 manncraft.string.sheen=Sheen
 manncraft.string.killstreaker=Killstreaker
+manncraft.string.collectors=Collector's
 
 # Messages
 manncraft.message.strange_level_up=%s's %s has reached a new rank: %s
