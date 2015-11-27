@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 @SideOnly(Side.CLIENT)
-public class KillstreakKitRenderer implements IItemRenderer {
+public class ItemKillstreakKitRenderer implements IItemRenderer {
 
 	private final ResourceLocation KILLSTREAK = new ResourceLocation(Reference.MOD_ID, "textures/models/killstreak_kit.png");
 	private final ResourceLocation SPECIALISED = new ResourceLocation(Reference.MOD_ID, "textures/models/specialised_killstreak_kit.png");
@@ -37,7 +37,7 @@ public class KillstreakKitRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch (type) {
 			case ENTITY:
-				renderModel(stack, 0.0F, 2.0F, 0.F, 1.5F);
+				renderModel(stack, 0.0F, 2.0F, 0.0F, 1.5F);
 				break;
 			case EQUIPPED:
 				renderModel(stack, 0.25F, 3.5F, 0.25F, 2.0F);

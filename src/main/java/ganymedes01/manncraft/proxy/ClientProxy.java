@@ -4,12 +4,17 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import ganymedes01.manncraft.ModBlocks;
 import ganymedes01.manncraft.ModItems;
-import ganymedes01.manncraft.client.renderer.items.KillstreakKitRenderer;
-import ganymedes01.manncraft.client.renderer.items.StrangifierRenderer;
+import ganymedes01.manncraft.client.renderer.items.ItemChemistrySetRenderer;
+import ganymedes01.manncraft.client.renderer.items.ItemKillstreakKitRenderer;
+import ganymedes01.manncraft.client.renderer.items.ItemStrangifierRenderer;
 import ganymedes01.manncraft.client.renderer.tileentities.TileEntityChemistrySetRenderer;
 import ganymedes01.manncraft.handler.events.ClientEventHandler;
 import ganymedes01.manncraft.tileentities.TileEntityChemistrySet;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -20,12 +25,21 @@ public class ClientProxy extends CommonProxy {
 		super.preInit(event);
 		MinecraftForge.EVENT_BUS.register(ClientEventHandler.INSTANCE);
 
-		MinecraftForgeClient.registerItemRenderer(ModItems.killstreak_kit, new KillstreakKitRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.specialised_killstreak_kit, new KillstreakKitRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.professional_killstreak_kit, new KillstreakKitRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.strangifier, new StrangifierRenderer());
+		registerItemRenderer(ModItems.killstreak_kit, new ItemKillstreakKitRenderer());
+		registerItemRenderer(ModItems.specialised_killstreak_kit, new ItemKillstreakKitRenderer());
+		registerItemRenderer(ModItems.professional_killstreak_kit, new ItemKillstreakKitRenderer());
+		registerItemRenderer(ModItems.strangifier, new ItemStrangifierRenderer());
+		registerItemRenderer(ModBlocks.chemistry_set, new ItemChemistrySetRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChemistrySet.class, new TileEntityChemistrySetRenderer());
+	}
+
+	private void registerItemRenderer(Item item, IItemRenderer renderer) {
+		MinecraftForgeClient.registerItemRenderer(item, renderer);
+	}
+
+	private void registerItemRenderer(Block block, IItemRenderer renderer) {
+		registerItemRenderer(Item.getItemFromBlock(block), renderer);
 	}
 
 	@Override

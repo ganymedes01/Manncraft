@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 @SideOnly(Side.CLIENT)
-public class StrangifierRenderer implements IItemRenderer {
+public class ItemStrangifierRenderer implements IItemRenderer {
 
 	private final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/models/strangifier.png");
 	private final ModelBaseManncraft MODEL = new ModelStrangifier();
@@ -32,7 +32,7 @@ public class StrangifierRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch (type) {
 			case ENTITY:
-				renderModel(stack, 0.0F, 2.0F, 0.F, 1.5F);
+				renderModel(stack, 0.0F, 2.0F, 0.0F, 1.5F);
 				break;
 			case EQUIPPED:
 				renderModel(stack, 0.25F, 3.5F, 0.25F, 2.0F);
