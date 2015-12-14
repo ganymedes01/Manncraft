@@ -35,7 +35,15 @@ public class ItemChemistrySet extends ItemBlockManncraft {
 
 	@Override
 	public void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip) {
-		if (nbt.getBoolean(COLLECTORS_KEY))
-			tooltip.add(EnumChatFormatting.DARK_RED + StatCollector.translateToLocal(Reference.MOD_ID + ".string.collectors"));
+	}
+
+	@Override
+	public String getNamePrefix(NBTTagCompound nbt) {
+		return StatCollector.translateToLocal(Reference.MOD_ID + ".string.collectors");
+	}
+
+	@Override
+	public EnumChatFormatting getTextColour() {
+		return EnumChatFormatting.DARK_RED;
 	}
 }

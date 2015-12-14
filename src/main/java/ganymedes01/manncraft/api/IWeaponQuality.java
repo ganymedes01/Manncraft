@@ -2,14 +2,16 @@ package ganymedes01.manncraft.api;
 
 import java.util.List;
 
+import ganymedes01.manncraft.Manncraft;
 import ganymedes01.manncraft.lib.Reference;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.util.Constants;
 
-public interface IWeaponQuality {
+public interface IWeaponQuality extends Comparable<IWeaponQuality> {
 
 	public static final String TARGET_WEAPON_KEY = "Weapon";
 
@@ -40,6 +42,14 @@ public interface IWeaponQuality {
 		return target != null && target.getItem() == weapon.getItem();
 	}
 
+	public default String getNamePrefix(NBTTagCompound nbt) {
+		return null;
+	}
+
+	public default EnumChatFormatting getTextColour() {
+		return EnumChatFormatting.WHITE;
+	}
+
 	void addDataToWeaponNBT(ItemStack stack, NBTTagCompound nbt);
 
 	boolean isQualityPresent(NBTTagCompound nbt);
@@ -50,4 +60,11 @@ public interface IWeaponQuality {
 	void onKill(EntityPlayer killer, EntityLivingBase victim, NBTTagCompound nbt, ItemStack weapon);
 
 	void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip);
+
+	@Override
+	public default int compareTo(IWeaponQuality obj) {
+		int index1 = Manncraft.QUALITY_ORDER.indexOf(this);
+		int index2 = Manncraft.QUALITY_ORDER.indexOf(obj);
+		return Integer.compare(index1, index2);
+	}
 }

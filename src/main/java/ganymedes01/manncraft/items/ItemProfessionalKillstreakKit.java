@@ -30,8 +30,6 @@ public class ItemProfessionalKillstreakKit extends ItemSpecialisedKillstreakKit 
 		}
 	}
 
-	public static final String KILLSTREAK_EYES_KEY = "EyeEffect";
-
 	public ItemProfessionalKillstreakKit() {
 		super("professional");
 	}
@@ -59,10 +57,21 @@ public class ItemProfessionalKillstreakKit extends ItemSpecialisedKillstreakKit 
 	}
 
 	@Override
+	public boolean isQualityPresent(NBTTagCompound nbt) {
+		return nbt.hasKey(KILLSTREAK_KEY, Constants.NBT.TAG_BYTE) && nbt.hasKey(KILLSTREAK_SHEEN_KEY, Constants.NBT.TAG_INT) && nbt.hasKey(KILLSTREAK_EYES_KEY, Constants.NBT.TAG_INT);
+	}
+
+	@Override
 	public void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip) {
+		super.onTooltipEvent(nbt, tooltip);
 		if (nbt.hasKey(KILLSTREAK_EYES_KEY, Constants.NBT.TAG_INT)) {
 			EyeEffect eyeEffect = EyeEffect.values()[nbt.getInteger(KILLSTREAK_EYES_KEY)];
 			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(Reference.MOD_ID + ".string.killstreaker") + ": " + eyeEffect.getLocalisedName());
 		}
+	}
+
+	@Override
+	public String getNamePrefix(NBTTagCompound nbt) {
+		return StatCollector.translateToLocal(Reference.MOD_ID + ".string.professional_killstreak_kit");
 	}
 }

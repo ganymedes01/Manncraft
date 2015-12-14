@@ -92,8 +92,18 @@ public class ItemStrangifier extends ItemManncraft {
 	@Override
 	public void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip) {
 		int kills = nbt.getInteger(STRANGE_KEY);
-		Rank rank = Rank.getRank(kills);
-		tooltip.add(EnumChatFormatting.GOLD + rank.getLocalisedName());
 		tooltip.add(EnumChatFormatting.GOLD + StatCollector.translateToLocal(Reference.MOD_ID + ".string.kills") + ": " + kills);
+	}
+
+	@Override
+	public String getNamePrefix(NBTTagCompound nbt) {
+		int kills = nbt.getInteger(STRANGE_KEY);
+		Rank rank = Rank.getRank(kills);
+		return rank.getLocalisedName();
+	}
+
+	@Override
+	public EnumChatFormatting getTextColour() {
+		return EnumChatFormatting.GOLD;
 	}
 }

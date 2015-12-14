@@ -38,8 +38,6 @@ public class ItemSpecialisedKillstreakKit extends ItemKillstreakKit {
 		}
 	}
 
-	public static final String KILLSTREAK_SHEEN_KEY = "Sheen";
-
 	public ItemSpecialisedKillstreakKit() {
 		super("specialised");
 	}
@@ -68,11 +66,22 @@ public class ItemSpecialisedKillstreakKit extends ItemKillstreakKit {
 	}
 
 	@Override
+	public boolean isQualityPresent(NBTTagCompound nbt) {
+		return nbt.hasKey(KILLSTREAK_KEY, Constants.NBT.TAG_BYTE) && nbt.hasKey(KILLSTREAK_SHEEN_KEY, Constants.NBT.TAG_INT) && !nbt.hasKey(KILLSTREAK_EYES_KEY, Constants.NBT.TAG_INT);
+	}
+
+	@Override
 	public void onTooltipEvent(NBTTagCompound nbt, List<String> tooltip) {
+		super.onTooltipEvent(nbt, tooltip);
 		if (nbt.hasKey(KILLSTREAK_SHEEN_KEY, Constants.NBT.TAG_INT)) {
 			Sheen sheen = Sheen.values()[nbt.getInteger(KILLSTREAK_SHEEN_KEY)];
 			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(Reference.MOD_ID + ".string.sheen") + ": " + sheen.getLocalisedName());
 		}
+	}
+
+	@Override
+	public String getNamePrefix(NBTTagCompound nbt) {
+		return StatCollector.translateToLocal(Reference.MOD_ID + ".string.specialised_killstreak");
 	}
 
 	protected int getProperty(ItemStack stack, String propName) {

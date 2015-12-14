@@ -1,12 +1,11 @@
 package ganymedes01.manncraft.handler.events;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import ganymedes01.manncraft.ModItems;
+import ganymedes01.manncraft.Manncraft;
 import ganymedes01.manncraft.api.IWeaponQuality;
 import ganymedes01.manncraft.lib.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -30,12 +29,9 @@ public class CommonEventHandler {
 				NBTTagCompound nbt = weapon.getTagCompound();
 				if (nbt.hasKey(Reference.MOD_NAME, Constants.NBT.TAG_COMPOUND)) {
 					nbt = nbt.getCompoundTag(Reference.MOD_NAME);
-					for (Item item : new Item[] { ModItems.strangifier, ModItems.killstreak_kit }) // FIXME workaround for now
-						if (item instanceof IWeaponQuality) {
-							IWeaponQuality mannItem = (IWeaponQuality) item;
-							if (mannItem.isQualityPresent(nbt))
-								mannItem.onKill(killer, event.entityLiving, nbt, weapon.copy());
-						}
+					for (IWeaponQuality weaponQuality : Manncraft.gettAllQualities())
+						if (weaponQuality.isQualityPresent(nbt))
+							weaponQuality.onKill(killer, event.entityLiving, nbt, weapon.copy());
 				}
 			}
 		}

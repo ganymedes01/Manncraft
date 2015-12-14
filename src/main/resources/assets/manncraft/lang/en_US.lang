@@ -13,6 +13,8 @@ itemGroup.manncraft=Manncraft
 # Strings
 manncraft.string.kills=Kills
 manncraft.string.killstreak=Killstreak
+manncraft.string.specialised_killstreak=Specialized Killstreak
+manncraft.string.professional_killstreak_kit=Professional Killstreak
 manncraft.string.sheen=Sheen
 manncraft.string.killstreaker=Killstreaker
 manncraft.string.collectors=Collector's
