@@ -10,8 +10,10 @@ import ganymedes01.manncraft.client.renderer.items.ItemChemistrySetRenderer;
 import ganymedes01.manncraft.client.renderer.items.ItemKillstreakKitRenderer;
 import ganymedes01.manncraft.client.renderer.items.ItemStrangifierRenderer;
 import ganymedes01.manncraft.client.renderer.tileentities.TileEntityChemistrySetRenderer;
+import ganymedes01.manncraft.client.renderer.tileentities.TileEntityCrateRenderer;
 import ganymedes01.manncraft.handler.events.ClientEventHandler;
 import ganymedes01.manncraft.tileentities.TileEntityChemistrySet;
+import ganymedes01.manncraft.tileentities.TileEntityCrate;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.IItemRenderer;
@@ -32,6 +34,7 @@ public class ClientProxy extends CommonProxy {
 		registerItemRenderer(ModBlocks.chemistry_set, new ItemChemistrySetRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChemistrySet.class, new TileEntityChemistrySetRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrate.class, new TileEntityCrateRenderer());
 	}
 
 	private void registerItemRenderer(Item item, IItemRenderer renderer) {

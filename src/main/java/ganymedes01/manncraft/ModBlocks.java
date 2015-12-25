@@ -6,12 +6,14 @@ import java.util.List;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.manncraft.blocks.BlockChemistrySet;
+import ganymedes01.manncraft.blocks.BlockCrate;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
 public class ModBlocks {
 
 	public static final Block chemistry_set = new BlockChemistrySet();
+	public static final Block crate = new BlockCrate();
 
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 

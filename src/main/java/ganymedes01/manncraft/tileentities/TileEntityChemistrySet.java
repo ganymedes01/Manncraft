@@ -1,7 +1,9 @@
 package ganymedes01.manncraft.tileentities;
 
+import ganymedes01.manncraft.ModBlocks;
 import ganymedes01.manncraft.items.ItemChemistrySet;
 import ganymedes01.manncraft.lib.Reference;
+import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -56,6 +58,8 @@ public class TileEntityChemistrySet extends TileEntity implements IInventory {
 		item.setPosition(xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F);
 		item.setEntityItemStack(result);
 		worldObj.spawnEntityInWorld(item);
+
+		worldObj.playAuxSFXAtEntity(null, 2001, xCoord, yCoord, zCoord, Block.getIdFromBlock(ModBlocks.chemistry_set));
 		worldObj.setBlockToAir(xCoord, yCoord, zCoord);
 	}
 

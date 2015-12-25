@@ -30,6 +30,11 @@ public class ItemChemistrySet extends ItemBlockManncraft {
 	}
 
 	@Override
+	public boolean isCompatibleWeapon(ItemStack stack, ItemStack weapon) {
+		return false; // Prevent quality being added through recipes
+	}
+
+	@Override
 	public void onKill(EntityPlayer killer, EntityLivingBase victim, NBTTagCompound nbt, ItemStack weapon) {
 	}
 

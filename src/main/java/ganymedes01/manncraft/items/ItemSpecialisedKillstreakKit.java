@@ -5,6 +5,8 @@ import java.util.Locale;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ganymedes01.manncraft.ModItems;
+import ganymedes01.manncraft.api.IWeaponQuality;
 import ganymedes01.manncraft.lib.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -68,6 +70,16 @@ public class ItemSpecialisedKillstreakKit extends ItemKillstreakKit {
 	@Override
 	public boolean isQualityPresent(NBTTagCompound nbt) {
 		return nbt.hasKey(KILLSTREAK_KEY, Constants.NBT.TAG_BYTE) && nbt.hasKey(KILLSTREAK_SHEEN_KEY, Constants.NBT.TAG_INT) && !nbt.hasKey(KILLSTREAK_EYES_KEY, Constants.NBT.TAG_INT);
+	}
+
+	@Override
+	public boolean isCompatibleWeapon(ItemStack stack, ItemStack weapon) {
+		if (super.isCompatibleWeapon(stack, weapon)) {
+			boolean isNormal = ((IWeaponQuality) ModItems.killstreak_kit).isQualityApplied(stack, weapon);
+			boolean isProf = ((IWeaponQuality) ModItems.professional_killstreak_kit).isQualityApplied(stack, weapon);
+			return !isNormal && !isProf;
+		}
+		return false;
 	}
 
 	@Override

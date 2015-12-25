@@ -18,6 +18,7 @@ manncraft.string.professional_killstreak_kit=Professional Killstreak
 manncraft.string.sheen=Sheen
 manncraft.string.killstreaker=Killstreaker
 manncraft.string.collectors=Collector's
+manncraft.string.unusual.effect=Unusual
 
 # Messages
 manncraft.message.strange_level_up=%s's %s has reached a new rank: %s

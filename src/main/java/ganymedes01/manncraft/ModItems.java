@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import ganymedes01.manncraft.items.ItemCrateKey;
 import ganymedes01.manncraft.items.ItemKillstreakKit;
 import ganymedes01.manncraft.items.ItemProfessionalKillstreakKit;
 import ganymedes01.manncraft.items.ItemSpecialisedKillstreakKit;
@@ -17,6 +18,7 @@ public class ModItems {
 	public static final Item killstreak_kit = new ItemKillstreakKit();
 	public static final Item specialised_killstreak_kit = new ItemSpecialisedKillstreakKit();
 	public static final Item professional_killstreak_kit = new ItemProfessionalKillstreakKit();
+	public static final Item crate_key = new ItemCrateKey();
 
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 

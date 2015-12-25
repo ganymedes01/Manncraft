@@ -3,6 +3,8 @@ package ganymedes01.manncraft.items;
 import java.util.List;
 import java.util.Locale;
 
+import ganymedes01.manncraft.ModItems;
+import ganymedes01.manncraft.api.IWeaponQuality;
 import ganymedes01.manncraft.handler.KillstreakHandler;
 import ganymedes01.manncraft.lib.Reference;
 import net.minecraft.entity.EntityLivingBase;
@@ -71,11 +73,20 @@ public class ItemKillstreakKit extends ItemManncraft {
 	}
 
 	@Override
+	public boolean isCompatibleWeapon(ItemStack stack, ItemStack weapon) {
+		if (super.isCompatibleWeapon(stack, weapon)) {
+			boolean isProf = ((IWeaponQuality) ModItems.professional_killstreak_kit).isQualityApplied(stack, weapon);
+			boolean isSpec = ((IWeaponQuality) ModItems.specialised_killstreak_kit).isQualityApplied(stack, weapon);
+			return !isProf && !isSpec;
+		}
+		return false;
+	}
+
+	@Override
 	public void onKill(EntityPlayer killer, EntityLivingBase victim, NBTTagCompound nbt, ItemStack weapon) {
 		KillstreakHandler.INSTANCE.onPlayerKill(killer);
 		if (victim instanceof EntityPlayer)
 			KillstreakHandler.INSTANCE.onPlayerDeath((EntityPlayer) victim);
-
 	}
 
 	@Override
