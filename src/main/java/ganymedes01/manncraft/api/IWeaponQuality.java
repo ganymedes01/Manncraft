@@ -50,6 +50,9 @@ public interface IWeaponQuality extends Comparable<IWeaponQuality> {
 		return EnumChatFormatting.WHITE;
 	}
 
+	public default void onUpdate(NBTTagCompound nbt, EntityLivingBase entity) {
+	}
+
 	void addDataToWeaponNBT(ItemStack stack, NBTTagCompound nbt);
 
 	boolean isQualityPresent(NBTTagCompound nbt);

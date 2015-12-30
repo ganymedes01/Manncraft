@@ -71,7 +71,7 @@ public class Manncraft {
 		proxy.postInit(event);
 	}
 
-	public static List<IWeaponQuality> gettAllQualities() {
+	public static List<IWeaponQuality> getAllQualities() {
 		List<IWeaponQuality> qualities = new ArrayList<IWeaponQuality>();
 		for (Item item : ModItems.ITEMS)
 			if (item instanceof IWeaponQuality)

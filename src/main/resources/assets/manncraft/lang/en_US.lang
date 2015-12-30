@@ -66,3 +66,7 @@ manncraft.killstreak.name.unstoppable=Unstoppable
 manncraft.killstreak.name.rampage=Rampage
 manncraft.killstreak.name.god_like=God-Like
 manncraft.killstreak.name.still_god_like=still God-Like
+
+# Unusual Effects
+manncraft.unusual.effect.orbiting_fire=Orbiting Fire
+manncraft.unusual.effect.burning_flames=Burning Flames

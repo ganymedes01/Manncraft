@@ -6,6 +6,7 @@ import java.util.Random;
 
 import ganymedes01.manncraft.ModItems;
 import ganymedes01.manncraft.items.ItemCrateKey;
+import ganymedes01.manncraft.items.ItemCrateKey.UnusualEffect;
 import ganymedes01.manncraft.lib.Reference;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -14,7 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class UnboxingHandler {
 
-	private static final float UNUSUAL_CHANCE = 0.1F;
+	private static final float UNUSUAL_CHANCE = 1.0F; // TODO think-up a good chance
 
 	private static List<Item> loot = new ArrayList<Item>();
 
@@ -25,6 +26,7 @@ public class UnboxingHandler {
 		loot.add(Items.golden_helmet);
 		loot.add(Items.diamond_helmet);
 		// TODO allow other mods to add their own helmets
+		// TODO add IUnusualHat interface
 	}
 
 	public static ItemStack getRandomHat(ItemStack key) {
@@ -39,5 +41,18 @@ public class UnboxingHandler {
 			((ItemCrateKey) ModItems.crate_key).addDataToWeaponNBT(key, nbt);
 
 		return stack;
+	}
+
+	public static boolean isHatUnusual(ItemStack hat) {
+		if (hat != null && hat.hasTagCompound() && loot.contains(hat.getItem())) {
+			NBTTagCompound nbt = hat.getTagCompound().getCompoundTag(Reference.MOD_NAME);
+			return nbt != null && ((ItemCrateKey) ModItems.crate_key).isQualityPresent(nbt);
+		}
+		return false;
+	}
+
+	public static UnusualEffect getEffect(ItemStack hat) {
+		NBTTagCompound nbt = hat.getTagCompound().getCompoundTag(Reference.MOD_NAME);
+		return UnusualEffect.getEffect(nbt.getString(ItemCrateKey.UNUSUAL_KEY));
 	}
 }
