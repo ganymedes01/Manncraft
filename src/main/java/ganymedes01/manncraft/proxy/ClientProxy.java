@@ -7,6 +7,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import ganymedes01.manncraft.ModBlocks;
 import ganymedes01.manncraft.ModItems;
 import ganymedes01.manncraft.client.renderer.items.ItemChemistrySetRenderer;
+import ganymedes01.manncraft.client.renderer.items.ItemCrateRenderer;
 import ganymedes01.manncraft.client.renderer.items.ItemKillstreakKitRenderer;
 import ganymedes01.manncraft.client.renderer.items.ItemStrangifierRenderer;
 import ganymedes01.manncraft.client.renderer.tileentities.TileEntityChemistrySetRenderer;
@@ -32,6 +33,7 @@ public class ClientProxy extends CommonProxy {
 		registerItemRenderer(ModItems.professional_killstreak_kit, new ItemKillstreakKitRenderer());
 		registerItemRenderer(ModItems.strangifier, new ItemStrangifierRenderer());
 		registerItemRenderer(ModBlocks.chemistry_set, new ItemChemistrySetRenderer());
+		registerItemRenderer(ModBlocks.crate, new ItemCrateRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChemistrySet.class, new TileEntityChemistrySetRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrate.class, new TileEntityCrateRenderer());
