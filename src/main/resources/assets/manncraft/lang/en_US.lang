@@ -1,11 +1,13 @@
 # Items
 item.manncraft.strangifier.name=Strangifier
-item.manncraft.killstreak_kit.name=Killstreak Kit 
+item.manncraft.killstreak_kit.name=Killstreak Kit
 item.manncraft.specialised_killstreak_kit.name=Specialized Killstreak Kit
-item.manncraft.professional_killstreak_kit.name=Professional Killstreak Kit 
+item.manncraft.professional_killstreak_kit.name=Professional Killstreak Kit
+item.manncraft.crate_key.name=Mann Co. Supply Crate Key
 
 # Blocks
 tile.manncraft.chemistry_set.name=Chemistry Set
+tile.manncraft.crate.name=Mann Co. Supply Crate
 
 # Creative Tabs
 itemGroup.manncraft=Manncraft
